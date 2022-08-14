@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="'ru">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,5 +7,80 @@
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head> 
-
+<body class="page">
+  <header class="header">
+    <img class="header__logo" src="./images/mesto_logo.png" alt="Логотип Место Россия">
+  </header>
+  <main>
+    <section class="profile">
+      <img class="profile__picture" src="./images/image.png" alt="Аватар профиля">
+      <div class="profile__info">
+        <div class="profile__nameContainer">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <img class="profile__editButton" src="./images/edit-button.svg" alt="Кнопка изменить">
+        </div>
+        <p class="profile__about">Исследователь океана</p>
+      </div>
+      <div class="profile__addBtn-border">
+        <img class="profile__addBtn-img" src="./images/add-button.svg" alt="Кнопка добавить">
+      </div>
+    </section>  
+    <div class="popup">
+      <form class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input type="text" class="popup__input popup__input_type_name">
+        <input type="text" class="popup__input popup__input_type_about">
+        <button type="submit" class="popup__submitBtn">Сохранить</button>
+        <img class="popup__closeBtn" src="./images/Close-Icon.svg" alt="Закрыть попап">
+      </form>
+    </div>
+    <section class="elements">
+      <div class="element">
+        <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Монастырь на горе в Карачаевске">
+        <div class="element__description">
+          <h2 class="element__name">Карачаевск</h2>
+          <img class="element__likeButton" src="./images/Vector.svg" alt="Кнопка лайк">
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/elbrus.png" alt="Вид на гору Эльбрус издалека">
+        <div class="element__description">
+          <h2 class="element__name">Гора Эльбрус</h2>
+          <img class="element__likeButton" src="./images/Vector.svg" alt="Кнопка лайк">
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/dombai.png" alt="Горный пик в Домбае">
+        <div class="element__description">
+          <h2 class="element__name">Домбай</h2>
+          <img class="element__likeButton" src="./images/Vector.svg" alt="Кнопка лайк">
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/elbrus.png" alt="Вид на гору Эльбрус издалека">
+        <div class="element__description">
+          <h2 class="element__name">Гора Эльбрус</h2>
+          <img class="element__likeButton" src="./images/Vector.svg" alt="Кнопка лайк">
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/dombai.png" alt="Горный пик в Домбае">
+        <div class="element__description">
+          <h2 class="element__name">Домбай</h2>
+          <img class="element__likeButton" src="./images/Vector.svg" alt="Кнопка лайк">
+        </div>
+      </div>
+      <div class="element">
+        <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Монастырь на горе в Карачаевске">
+        <div class="element__description">
+          <h2 class="element__name">Карачаево-Черкессия</h2>
+          <img class="element__likeButton" src="./images/Vector.svg" alt="Кнопка лайк">
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__text">&copy; 2022 Mesto Russia</p>
+  </footer>
+</body>
 </html>
