@@ -4,7 +4,9 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  color: #FFFFFF;
+  background-image: url('../../../images/Close-Icon.svg');
+  background-size: cover;
+  background-color: transparent;
   z-index: 1;
   transition: opacity .1s ease-out;
 }

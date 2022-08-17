@@ -1,6 +1,7 @@
 .popup__input {
   width: calc(100% - 72px);
   height: 27px;
+  margin: 54px auto 0;
   padding: 0;
   font-family: 'Inter', 'Helvetica', sans-serif;
   font-size: 14px;
@@ -8,10 +9,15 @@
   font-weight: 400;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
 }
 
 .popup__input:focus {
   outline: none;
+}
+
+.popup__input:last-of-type {
+  margin: 30px auto 0;
 }
 
 @media screen and (max-width: 619px) {

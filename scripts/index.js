@@ -9,7 +9,7 @@ let popupInputAbout = popup.querySelector('.popup__input_type_about');
 let popupSubmitButton = popup.querySelector('.popup__submitBtn');
 let popupCloseButton = popup.querySelector('.popup__closeBtn');
 let elements = document.querySelector('.elements');
-let likeButton = elements.querySelectorAll('.element__likeButton');
+let likeButtons = document.querySelectorAll('.element__likeButton');
 
 // Объявляем функции
 function popupOpen() { // функция открытия попапа
@@ -27,6 +27,12 @@ function formSubmit () {
   popup.classList.remove('popup_opened'); // убрать у попапа модификатор открытия
   profileName.textContent = popupInputName.value; // заменить текстовое содержимое имени профиля
   profileAbout.textContent = popupInputAbout.value // заменить текстовое содержимое професии
+}
+
+function likeToggle () { //функция переключения активности кнопки лайк
+  event.preventDefault(); // предотвратить стандартную перезагрузку страницы
+  likeButtons.classList.toggle('element__likeButton_active'); //переключаем модификатор стиля кнопки
+  console.log('Лайк переключен');
 }
 
 // Добавляем события
