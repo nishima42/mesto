@@ -1,8 +1,8 @@
 .element__description {
   display: flex;
-  width: calc(100% - 32px);
+  width: calc(100% - 36px);
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 15px 0 21px;
   padding: 25px 0 31px;
 }

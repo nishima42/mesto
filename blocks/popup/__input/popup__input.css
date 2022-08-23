@@ -1,11 +1,11 @@
 .popup__input {
   width: calc(100% - 72px);
-  height: 27px;
-  margin: 54px auto 0;
+  margin: 44px auto 0;
   padding: 0;
+  padding-bottom: 10px;
   font-family: 'Inter', 'Helvetica', sans-serif;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 17x;
   font-weight: 400;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
@@ -23,5 +23,6 @@
 @media screen and (max-width: 619px) {
   .popup__input {
     width: calc(100% - 44px);
+    margin-top: 75px;
   }
 }
