@@ -26,5 +26,7 @@
     width: calc(100% - 44px);
     height: 46px;
     margin: 45px auto 25px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
