@@ -63,7 +63,7 @@ const cards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#elementTemplate').content;  // Определили переменную Шаблон карточки
 
 function createCard(item) {  // Функция создания карточки из шаблона с подставлением данных из инпута или массива
-  let cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   cardElement.querySelector('.element__name').textContent = inputPlace.value || item.name;
   cardElement.querySelector('.element__image').src = inputLink.value || item.link;
   cardElement.querySelector('.element__image').alt = inputPlace.value || item.name;
@@ -74,7 +74,7 @@ function createCard(item) {  // Функция создания карточки
     evt.target.closest('.element').remove();  // Удаление ближайшего родителя цели
 });
   cardElement.querySelector('.element__image').addEventListener('click', function(evt) {
-    let targetPic = evt.target;
+    const targetPic = evt.target;
     cardPopupImage.src = targetPic.src;
     cardPopupImage.alt = targetPic.alt;
     cardPopupTitle.textContent = targetPic.alt;
@@ -90,10 +90,10 @@ addButton.addEventListener('click', function() { // Клик по кнопке �
 
 addPopupForm.addEventListener('submit', function(evt) {  // Отправить форму
   evt.preventDefault();
-  let cardElement = createCard();
+  const cardElement = createCard();
   cards.prepend(cardElement);
   closePopup(addPopup);
-  document.getElementById('addPopopForm').reset();
+  addPopopForm.reset();
 });
 
 // Массив с данными начальных карточек
@@ -126,7 +126,7 @@ const initialCards = [
 
 // Функция первоначальной загрузки карточек
 function loadInitial(item) {
-  let initialCard = createCard(item);
+  const initialCard = createCard(item);
   cards.append(initialCard);
 }
 
