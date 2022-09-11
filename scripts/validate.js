@@ -8,7 +8,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add('popup__input_type_error');
   errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup_input-error_active');
+  errorElement.classList.add('popup__input-error_active');
 };
 
 // hideInputError
@@ -16,7 +16,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup_input-error_active');
+  errorElement.classList.remove('popup__input-error_active');
   errorElement.textContent = '';
 };
 
@@ -80,5 +80,5 @@ enableValidation({
   submitButtonSelector: '.popup__submitBtn',
   inactiveButtonClass: 'popup__submitBtn_inactive',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup_input-error_active'
+  errorClass: 'popup__input-error_active'
 }); 
