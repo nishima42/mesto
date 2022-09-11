@@ -13,7 +13,7 @@
   color: #FFFFFF;
   transition: opacity .1s ease-out;
   border: none;
-  display: block;
+  display: block; 
 }
 
 .popup__submitBtn:hover {

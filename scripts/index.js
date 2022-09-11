@@ -8,19 +8,36 @@ const addButton = profile.querySelector('.profile__addBtn');
 //Функции открыть/закрыть любой попап
 function openPopup(popup) { // Открыть любой попап
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', popupHandler);
+  document.addEventListener('keydown', escHandler);
 }
 
 function closePopup(popup) { // Закрыть любой попап
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', popupHandler);
+  document.removeEventListener('keydown', escHandler);
 }
 
-//Обработчик кнопок закрытия
+//Обработчики кнопок закрытия
 const closeButtons = document.querySelectorAll('.popup__closeBtn');
 
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+
+const popupHandler = (evt) => {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+};
+
+const escHandler = (evt) => {
+  if (evt.keyCode === 27) {
+    const activePopup = document.querySelector('.popup_opened');
+    closePopup(activePopup);
+  }
+}
 
 //Попап профиль
 const profilePopup = document.querySelector('.profilePopup');
@@ -41,7 +58,7 @@ profilePopupForm.addEventListener('submit', function(evt) { // Отправит�
   profileName.textContent = inputName.value;
   profileAbout.textContent = inputAbout.value;
   closePopup(profilePopup);
-})
+});
 
 //Попап Добавить
 const addPopup = document.querySelector('.addPopup');
