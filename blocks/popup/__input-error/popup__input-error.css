@@ -1,6 +1,6 @@
 .popup__input-error {
-  width: calc(100% - 72px);
-  margin: 5px auto 0;
+  width: 100%;
+  margin: 0 auto 0;
   padding: 0;
   font-family: 'Inter', 'Helvetica', sans-serif;
   font-size: 12px;
@@ -8,10 +8,7 @@
   font-weight: 400;
   color: #FF0000;
   display: none;
-}
-
-@media screen and (max-width: 619px) {
-  .popup__input-error {
-    width: calc(100% - 44px);
-  }
+  position: absolute;
+  top: 5px;
+  left: 0;
 }
