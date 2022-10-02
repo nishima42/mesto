@@ -1,3 +1,8 @@
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
+import {initialCards} from './initial-сards.js';
+import {validationConfig} from './validationConfig.js';
+
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileAbout = profile.querySelector('.profile__about');
@@ -52,7 +57,7 @@ function disableSubmitButton(popup) { // Деактивировать кнопк
  const submitButton = popup.querySelector('.popup__submitBtn');
   submitButton.disabled = true;
 }
-
+/*
 function createCard(item) {  // Функция создания карточки из шаблона с подставлением данных из инпута или массива
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   const elementImage = cardElement.querySelector('.element__image');
@@ -79,7 +84,7 @@ function appendCard(item) { //Функция первоначальной заг
   const initialCard = createCard(item);
   cards.append(initialCard);
 }
-
+*/
 const closeByOverlayClick = (evt) => { //Закрытие через клик по оверлею
   if (evt.target === evt.currentTarget) {
     closePopup(evt.currentTarget);
@@ -93,7 +98,7 @@ const escHandler = (evt) => { //Закрытие через ecs
   }
 };
 
-initialCards.forEach(appendCard); //Вызов загрузки начальных карточек
+//initialCards.forEach(appendCard); //Вызов загрузки начальных карточек
 
 closeButtons.forEach((button) => { //Обработчик всех кнопок закрытия
   const popup = button.closest('.popup');
@@ -124,9 +129,22 @@ addButton.addEventListener('click', function() { //Клик по кнопке Д
 
 formAddCard.addEventListener('submit', function(evt) { //Отправить форму
   evt.preventDefault();
-  const cardElement = {name: inputPlace.value, link: inputLink.value};
-  const newCard = createCard(cardElement);
-  cards.prepend(newCard);
+  const cardData = {name: inputPlace.value, link: inputLink.value};
+  const card = new Card(cardData, '.card-template');
+  const cardElement = card.generateCard();
+  cards.prepend(cardElement);
   closePopup(popupAddCard);
   formAddCard.reset();
+});
+
+initialCards.forEach((item) => {
+  const card = new Card(item, '.card-template');
+  const cardElement = card.generateCard();
+
+  cards.append(cardElement)
+});
+
+document.querySelectorAll('.popup__form').forEach((formElement) => {
+  const formValidator = new FormValidator(validationConfig, formElement);
+  formValidator.enableValidation();
 });
