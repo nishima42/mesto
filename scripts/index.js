@@ -45,8 +45,10 @@ function openImagePopup(name, link) {
   openPopup(cardPopup);
 }
 
-function createCard(cardCopy) {
-  return cardCopy.generateCard();
+function createCard(cardData) {
+  const card = new Card(cardData, '.card-template', openImagePopup);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
 const closeByOverlayClick = (evt) => { //Закрытие через клик по оверлею
@@ -82,19 +84,17 @@ addButton.addEventListener('click', function() { //Клик по кнопке Д
 });
 
 formAddCard.addEventListener('submit', function(evt) { //Отправить форму
-  evt.preventDefault();
-  const cardData = {name: inputPlace.value, link: inputLink.value};
-  const card = new Card(cardData, '.card-template', openImagePopup);
-  const cardElement = createCard(card);
+  evt.preventDefault(); // +
+  const cardData = {name: inputPlace.value, link: inputLink.value}; // +
+  const cardElement = createCard(cardData);
   cardsContainer.prepend(cardElement);
   closePopup(popupAddCard);
   formAddCard.reset();
 });
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '.card-template', openImagePopup);
-  const cardElement = createCard(card);
-  cardsContainer.append(cardElement)
+  const cardElement = createCard(item);
+  cardsContainer.append(cardElement);
 });
 
 const profileValidation = new FormValidator(validationConfig, profilePopupForm);
