@@ -50,11 +50,11 @@
     <div class="popup__container">
       <form class="popup__form" name="addPicture" id="addPopopForm" novalidate>
         <h2 class="popup__title">Новое место</h2>
-          <input id="place-input" type="text" class="popup__input inputPlace" name="placeName" placeholder="Название" minlength="2" maxlength="30" required>
+          <input id="place-input" type="text" class="popup__input inputPlace" name="name" placeholder="Название" minlength="2" maxlength="30" required>
           <div class="popup__errorContainer">
             <span class="popup__input-error place-input-error"></span>
           </div>
-          <input id="link-input" type="url" class="popup__input inputLink" name="placeLink" placeholder="Ссылка на картинку" required>
+          <input id="link-input" type="url" class="popup__input inputLink" name="link" placeholder="Ссылка на картинку" required>
           <div class="popup__errorContainer">
             <span class="popup__input-error link-input-error"></span>
           </div>
@@ -80,6 +80,6 @@
       </div>
     </article>
   </template>
-  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>

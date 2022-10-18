@@ -1,9 +1,9 @@
-export class Card { // Класс Карточка
-  constructor(data, templateSelector, openImagePopup) { // принимается объект со свойствами и класс шаблона
+export default class Card { // Класс Карточка
+  constructor(data, templateSelector, handleCardClick) { // принимается объект со свойствами и класс шаблона
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._openImagePopup = openImagePopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() { // метод клонирования шаблона
@@ -38,7 +38,7 @@ export class Card { // Класс Карточка
     });
 
     this._cardImage.addEventListener('click', () => {
-      this._openImagePopup(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     });
   }
 
