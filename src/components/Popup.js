@@ -5,11 +5,16 @@ export default class Popup {
   }
 
   open() {
-    this.setEventListeners();
+    document.addEventListener('keydown', (evt) => {
+      this._handleEscClose(evt);
+    });
     this._popup.classList.add('popup_opened');
   }
 
   close() {
+    document.removeEventListener('keydown', (evt) => {
+      this._handleEscClose(evt);
+    });
     this._popup.classList.remove('popup_opened');
   }
 
@@ -24,9 +29,6 @@ export default class Popup {
       if(evt.target === evt.currentTarget || evt.target.classList.contains('popup__closeBtn')) {
         this.close();
       }
-    });
-    document.addEventListener('keydown', (evt) => {
-      this._handleEscClose(evt);
     });
   }
 }

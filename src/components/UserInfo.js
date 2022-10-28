@@ -5,12 +5,13 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    document.querySelector('.inputName').value = this._profileName;
-    document.querySelector('.inputAbout').value = this._profileAbout;
+    document.querySelector('.inputName').value = this._profileName.textContent;
+    document.querySelector('.inputAbout').value = this._profileAbout.textContent;
+
   }
 
   setUserInfo() {
-    document.querySelector('.profile__name').textContent = this._profileName;
-    document.querySelector('.profile__about').textContent = this._profileAbout;
+    this._profileName.textContent = document.querySelector('.inputName').value;
+    this._profileAbout.textContent = this._profileAbout.textContent = document.querySelector('.inputAbout').value;
   }
 }
