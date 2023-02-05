@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({nameEdit, aboutEdit}) {
+  constructor({nameEdit, aboutEdit, avatarEdit}) {
     this._profileName = nameEdit;
     this._profileAbout = aboutEdit;
+    this._avatarEdit = avatarEdit
   }
 
   getUserInfo() {
@@ -10,8 +11,9 @@ export default class UserInfo {
 
   }
 
-  setUserInfo() {
-    this._profileName.textContent = document.querySelector('.inputName').value;
-    this._profileAbout.textContent = this._profileAbout.textContent = document.querySelector('.inputAbout').value;
+  setUserInfo(nameServer, aboutServer, avatarServer) { // устанавливает инфо
+    this._profileName.textContent = nameServer;
+    this._profileAbout.textContent = aboutServer;
+    this._avatarEdit.src = avatarServer;
   }
 }

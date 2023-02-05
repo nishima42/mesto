@@ -9,9 +9,21 @@ export default class Section {
     this._container.append(element);
   }
 
-  renderItems() {
+  renderItems(myId) {
+    this._myId = myId;
     this._renderedItems.forEach(item => {
-      this._renderer(item);
+      this._renderer(item, this._myId);
     });
   }
-}
+
+  clearSection() {
+    this._container.innerHTML = '';
+    console.log('Секция очищена');
+  }
+
+  refreshData(newData) {
+    this._renderedItems = newData;
+    console.log('Список карточек обновлен');
+  }
+
+}  

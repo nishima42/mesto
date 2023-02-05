@@ -30,4 +30,9 @@ export default class PopupWithForm extends Popup {
       this._handleFormSubmit(this._getInputValues());
     });
   }
+
+  changeButtonText(text) {
+    this._text = text;
+    this._popup.querySelector('.popup__submitBtn').textContent = this._text;
+  }
 }
