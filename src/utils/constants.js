@@ -10,8 +10,8 @@ export const popupEditAvatar = document.querySelector('.avatarPopup');
 export const formEditAvatar = popupEditAvatar.querySelector('.popup__form');
 export const cardsContainer = '.elements';
 export const profileSelectors = {
-  nameEdit: document.querySelector('.profile__name'),
-  aboutEdit: document.querySelector('.profile__about'),
+  name: document.querySelector('.profile__name'),
+  about: document.querySelector('.profile__about'),
   avatarEdit: document.querySelector('.profile__picture')
 };
 export const imagePopupSelector = '.card-popup';

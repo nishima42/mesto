@@ -16,14 +16,13 @@ export default class Section {
     });
   }
 
-  clearSection() {
-    this._container.innerHTML = '';
-    console.log('Секция очищена');
-  }
-
   refreshData(newData) {
     this._renderedItems = newData;
     console.log('Список карточек обновлен');
+  }
+  
+  prependCard(element) {
+    this._container.prepend(element);
   }
 
 }  

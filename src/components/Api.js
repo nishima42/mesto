@@ -1,177 +1,90 @@
 export default class Api {
-  constructor(cohort, authorization) {
-    this._cohort = cohort;
-    this._authorization = authorization;
-  }
-  
-  getUserInfo() { // метод запроса данных о пользователе
-    return fetch(`https://nomoreparties.co/v1/${this._cohort}/users/me`, {  //отправить GET запрос
-      headers: { // с заголовком
-        authorization: this._authorization // токен авторизации
-      }
-    })
-    .then((res) => { // затем из полученного ответа
-      if(res.ok) {  // если с ответом все ок
-        return res.json(); // вернуть результат json
-      } else {      
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } // Вернуть отклоненный промис, если не ок
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    }); 
+  constructor({baseUrl, headers}) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
   }
 
-  patchUserInfo(formData) { // метод обновления данных пользователя
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me`, {
+  _checkResponse(res) {
+    if(res.ok) { 
+      console.log('Ответ получен');
+      return res.json();
+    } else {      
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+  }
+
+  getUserInfo() { // url = 'users/me'
+    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me', 
+    {headers: this._headers})
+    .then(this._checkResponse)
+  }
+
+  getCardArray() { // МЕТОД ЗАПРОСА КАРТОЧЕК ДЛЯ ЗАГРУЗКИ url = 'cards'
+    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards', {headers: this._headers})
+    .then(this._checkResponse)
+  }
+
+  patchUserInfo(formData) { // метод обновления данных пользователя url = 'users/me'
+    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me', {
       method: 'PATCH',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
-        name: formData.nameEdit,
-        about: formData.aboutEdit
+        name: formData.name,
+        about: formData.about
       })
     })
-    .then((res) => { // затем из полученного ответа
-      if(res.ok) {  // если с ответом все ок
-        return res.json(); // вернуть результат json
-      } else {      
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } // Вернуть отклоненный промис, если не ок
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    }); 
+    .then(this._checkResponse)
   }
 
-  patchAvatar(avatarLink) {
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me/avatar`, {
+  patchAvatar(avatarLink) { // url = 'users/me/avatar'
+    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me/avatar', {
       method: 'PATCH',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: avatarLink.avatar
       })
     })
-    .then((res) => { // затем из полученного ответа
-      if(res.ok) {  // если с ответом все ок
-        return res.json(); // вернуть результат json
-      } else {      
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } // Вернуть отклоненный промис, если не ок
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    }); 
+    .then(this._checkResponse)
   }
 
-  getCardArray() { // МЕТОД ЗАПРОСА КАРТОЧЕК ДЛЯ ЗАГРУЗКИ
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, { 
-      headers: {
-        authorization: this._authorization
-      }
-    })
-    .then((res) => { // затем из полученного ответа
-      if(res.ok) { // если ответ ок
-        return res.json(); // вернуть результат json
-      } else {      
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } // Вернуть отклоненный промис, если не ок
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    });
-  }
-
-  postCard({name, link}) {
+  postCard({name, link}) { // url = 'cards'
     this._name = name;
     this._link = link;
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, {
+    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards', {
       method: 'POST',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: this._name,
         link: this._link
       })
     })
-    .then((res) => {
-      if(res.ok) {
-        return res.json();
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } // Вернуть отклоненный промис, если не ок
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    });
+    .then(this._checkResponse)
   }
 
-  deleteCard(cardId) {
+  deleteCard(cardId) { // url = 'cards'
     this._cardId = cardId;
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards/${this._cardId}`, {  
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-59/cards/${this._cardId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: this._authorization,
-      },
+      headers: this._headers,
     })
-    .then((res) => { // затем из полученного ответа
-      if(res.ok) {  // если с ответом все ок
-        return res.json(); // вернуть результат json
-      } else {      
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } // Вернуть отклоненный промис, если не ок
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    }); 
+    .then(this._checkResponse)
   }
 
   addLike(id) {
     this._id = id;
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards/${this._id}/likes`, {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-59/cards/${this._id}/likes`, {
       method: 'PUT',
-      headers: {
-        authorization: this._authorization,
-      },
+      headers: this._headers,
     })
-    .then((res) => {
-      if(res.ok) {
-        console.log('лайк добавлен');
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    });
-
+    .then(this._checkResponse)
   }
   
   removeLike(id) {
     this._id = id;
-    return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards/${this._id}/likes`, {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-59/cards/${this._id}/likes`, {
       method: 'DELETE',
-      headers: {
-        authorization: this._authorization,
-      },
+      headers: this._headers,
     })
-    .then((res) => {
-      if(res.ok) {
-        console.log('лайк убран');
-      } else {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      }
-    })
-    .catch((err) => { // если запрос не ушел
-      console.log(err); // выведем ошибку в консоль
-    });
+    .then(this._checkResponse)
   }
-
 }
