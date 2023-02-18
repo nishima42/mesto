@@ -14,18 +14,18 @@ export default class Api {
   }
 
   getUserInfo() { // url = 'users/me'
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me', 
+    return fetch(`${this._baseUrl}/users/me`, 
     {headers: this._headers})
     .then(this._checkResponse)
   }
 
   getCardArray() { // МЕТОД ЗАПРОСА КАРТОЧЕК ДЛЯ ЗАГРУЗКИ url = 'cards'
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards', {headers: this._headers})
+    return fetch(`${this._baseUrl}/cards`, {headers: this._headers})
     .then(this._checkResponse)
   }
 
   patchUserInfo(formData) { // метод обновления данных пользователя url = 'users/me'
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me', {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -37,7 +37,7 @@ export default class Api {
   }
 
   patchAvatar(avatarLink) { // url = 'users/me/avatar'
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/users/me/avatar', {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -50,7 +50,7 @@ export default class Api {
   postCard({name, link}) { // url = 'cards'
     this._name = name;
     this._link = link;
-    return fetch('https://mesto.nomoreparties.co/v1/cohort-59/cards', {
+    return fetch(`${this._baseUrl}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -63,7 +63,7 @@ export default class Api {
 
   deleteCard(cardId) { // url = 'cards'
     this._cardId = cardId;
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-59/cards/${this._cardId}`, {
+    return fetch(`${this._baseUrl}/cards/${this._cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     })
@@ -72,7 +72,7 @@ export default class Api {
 
   addLike(id) {
     this._id = id;
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-59/cards/${this._id}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${this._id}/likes`, {
       method: 'PUT',
       headers: this._headers,
     })
@@ -81,7 +81,7 @@ export default class Api {
   
   removeLike(id) {
     this._id = id;
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-59/cards/${this._id}/likes`, {
+    return fetch(`${this._baseUrl}/cards/${this._id}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     })
